@@ -1,12 +1,13 @@
 package es.curso.java.colecciones.ejercicios;
 
-import java.util.ArrayList;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 import es.curso.java.poo.ejercicios.Alumno;
-import es.curso.java.utils.Utilidades;
+
+import utils.Utils;
 
 public class EjercicioListadoAlumnos {
 
@@ -25,7 +26,7 @@ public class EjercicioListadoAlumnos {
 		
 		pintaAlumnos(alumnos);
 		
-		String dni = Utilidades.pideDatoTexto("Introduce el dni a borrar");
+		String dni = Utils.pideDatoTexto("Introduce el dni a borrar");
 		
 		for (Alumno alumno : alumnos) {
 			if (dni.equalsIgnoreCase(alumno.getDni())) {
@@ -35,7 +36,7 @@ public class EjercicioListadoAlumnos {
 		
 		pintaAlumnos(alumnos);
 		
-		dni = Utilidades.pideDatoTexto("Introduce el dni del alumno a modificar");
+		dni = Utils.pideDatoTexto("Introduce el dni del alumno a modificar");
 		
 		for (Alumno alumno : alumnos) {
 			if (dni.equalsIgnoreCase(alumno.getDni())) {

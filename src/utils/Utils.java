@@ -3,12 +3,12 @@ import java.util.Scanner;
 
 public class Utils {
 	
-	public static String pideDatoTexto() {
+	public static String pideDatoTexto(String str) {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Ingrese un texto: ");
-		String str = sc.next();
+		String str2 = sc.next();
 		
-		return str;
+		return str2;
 	}
 	
 	public static int pideDatoNumerico() {

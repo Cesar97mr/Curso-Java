@@ -2,10 +2,10 @@ package poo;
 
 public class Alumno {
 	
-	 int dni;
-	 String nombre;
-	 String apellidos;
-	 int nota;
+	  int dni;
+	  String nombre;
+	  String apellidos;
+	  int nota;
 	
 	public Alumno() {
 		
@@ -22,6 +22,31 @@ public class Alumno {
 		this.nota = nota;
 	}
 	
+	
+	public int getDni() {
+		return dni;
+	}
+	public void setDni(int dni) {
+		this.dni = dni;
+	}
+	public String getNombre() {
+		return nombre;
+	}
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+	public String getApellidos() {
+		return apellidos;
+	}
+	public void setApellidos(String apellidos) {
+		this.apellidos = apellidos;
+	}
+	public int getNota() {
+		return nota;
+	}
+	public void setNota(int nota) {
+		this.nota = nota;
+	}
 	public void estudiar() {
 		
 		if(this.nota == 0) {

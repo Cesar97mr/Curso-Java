@@ -1,6 +1,6 @@
 package hospital;
 
-public abstract class  Persona {
+ public class  Persona {
 	
 	private int id;
 	private String nombre;
@@ -16,6 +16,9 @@ public abstract class  Persona {
 		this.edad = edad;
 	}
 	
+	public Persona(String string) {
+		// TODO Auto-generated constructor stub
+	}
 	public int getId() {
 		return id;
 	}
@@ -40,5 +43,5 @@ public abstract class  Persona {
 		this.edad = edad;
 	}
 
-	public abstract void comer();
+
 }
