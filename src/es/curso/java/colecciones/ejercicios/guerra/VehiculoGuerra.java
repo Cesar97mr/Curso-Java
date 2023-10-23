@@ -14,7 +14,7 @@ public abstract class VehiculoGuerra implements Tripulable {
 	private List<Guerrero> guerreros = new ArrayList<Guerrero>();
 	private int puntosVida=PUNTOS_VIDA;
 	
-	
+	// Creamos los valores de ataque y defensa del tanque:
 	private VehiculoGuerra (int ataque, int defensa) throws LimiteValoresException {
 		if (ataque+defensa>10) {
 			throw new LimiteValoresException(
