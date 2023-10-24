@@ -1,4 +1,3 @@
-package es.curso.java.ddbb;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
