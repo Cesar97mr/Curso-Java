@@ -5,6 +5,10 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.HashSet;
+import java.util.Set;
+
+import mysql.Facility;
 
 public class ConexionBaseDeDatos {
 
@@ -93,3 +97,5 @@ public class ConexionBaseDeDatos {
 
 	}
 }
+
+

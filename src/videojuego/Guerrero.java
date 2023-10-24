@@ -2,7 +2,7 @@ package videojuego;
 
 
 
-public class Guerreros implements Ejercito {
+public class Guerrero implements Ejercito {
 		private int danio;
 		private int velocidad;
 		private int escudo;
@@ -53,6 +53,24 @@ public class Guerreros implements Ejercito {
 
 		@Override
 		public void soldadoEspecial() {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void atacar() {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void defender() {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void generarSoldados(int num) {
 			// TODO Auto-generated method stub
 			
 		}
