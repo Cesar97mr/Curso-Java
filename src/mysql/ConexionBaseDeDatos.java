@@ -5,18 +5,23 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
+import es.curso.java.colecciones.ejercicios.guerra.Guerrero;
 import mysql.Facility;
 
 public class ConexionBaseDeDatos {
-
+	
+	
 	public static void main(String[] args) {
 		ConexionBaseDeDatos conexion = new ConexionBaseDeDatos();
 		conexion.conectaTryWithResources();
 
 	}
+	
 	
 	private void conectaTryWithResources() {
 		String url = "jdbc:mysql://localhost:3306/db_alumnos?serverTimezone=Europe/Madrid";
