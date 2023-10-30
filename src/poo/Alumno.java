@@ -68,5 +68,10 @@ public class Alumno {
 			}
 		}
 	}
+	@Override
+	public String toString() {
+		return "Alumno [dni=" + dni + ", nombre=" + nombre + ", apellidos=" + apellidos + ", nota=" + nota + "]";
+	}
+	
 	
 }
