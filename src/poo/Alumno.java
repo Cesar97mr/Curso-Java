@@ -6,10 +6,7 @@ public class Alumno {
 	  String nombre;
 	  String apellidos;
 	  int nota;
-	
-	public Alumno() {
-		
-	}
+
 	public Alumno(int dni, String nombre, String apellidos) {
 		this.dni = dni;
 		this.nombre = nombre;
