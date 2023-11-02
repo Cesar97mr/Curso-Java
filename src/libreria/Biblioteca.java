@@ -84,68 +84,80 @@ public Biblioteca(String nombre) {
 			}
 		}
 	}
-	public void librosPrestados() {
-		if(this.libros.size() == 0) {
-			System.out.println("No tenemos libros disponibles!!");
-		}else {
-			for (Map.Entry<String, Libro> libreria : this.prestados.entrySet()) {
-				System.out.println("[ " + libreria.getKey() + " ] " + " = "+ libreria.getValue().getAutor() + " - " + 
-								   libreria.getValue().getTitulo() + " - " + libreria.getValue().getNumCopias());
-			}
-		}
-	}
+	
 	
 	public void prestarLibro() {
 		Set<Entry<String, Libro>> biblio  = this.libros.entrySet();
-		Set<Entry<String, Libro>> cogidos = this.prestados.entrySet();
+		Set<Entry<String, Libro>> prestados = this.prestados.entrySet();
 		
 		System.out.println("Introduce el nombre del libro: ");
 		String titulo = sc.nextLine();
 		int exists = 0;
-		int copias = 0;
-		
+		for (Entry<String, Libro> entry : biblio) {
+			if(entry.getKey().equals(entry.getValue().getTitulo()) && entry.getKey().equals("")) {
+				this.prestados.put("true", entry.getValue());
+			}else if(entry.getKey().equals(entry.getValue().getTitulo()) && entry.getKey().equals("true")) {
+				for (Entry<String, Libro> entry2 : prestados) {
+					if(entry2.getValue().getTitulo().equals(titulo)) {
+						entry2.getValue().setNumCopias(entry2.getValue().getNumCopias() + 2);
+					}
+				}
+			}
+		}
+	
 		for (Entry<String, Libro> entry : biblio) {
 			
 			int numCopias = entry.getValue().getNumCopias();
 		
 			if(entry.getKey().equals(titulo) && numCopias == 1){		
 				exists = 1;
-				prestados.put(entry.getKey(), entry.getValue());
+
 				entry.getValue().setNumCopias(numCopias -1);		
 				System.out.println("Libro entregado! - NumCopias restantes = " + entry.getValue().getNumCopias());
 			
 			}else if(entry.getKey().equals(titulo)){
+				
 				entry.getValue().setNumCopias(numCopias -1);
-				copias++;
-				prestados.put(entry.getKey(), entry.getValue());
+			
 				System.out.println("Libro entregado! - NumCopias restantes = " + entry.getValue().getNumCopias());
 			}
 		}
+		
+		
+		
 		if(exists == 1) {
 			this.libros.remove(titulo);
 			exists = 0;
 		}
-		for (Entry<String, Libro> entry : cogidos) {
-			if(entry.getKey().equals(titulo)) {
-				entry.getValue().setNumCopias(entry.getValue().getNumCopias() + copias);
+	}
+	public void librosPrestados() {
+		Set<Entry<String, Libro>> prestados = this.prestados.entrySet();
+		
+		if(this.libros.size() == 0) {
+			System.out.println("No tenemos libros disponibles!!");
+		}else {
+			for (Entry<String, Libro> libreria: prestados) {
+				System.out.println("[ " + libreria.getKey() + " ] " + " - " + 
+								   libreria.getKey() + " - " + libreria.getValue().getNumCopias());
 			}
 		}
-		
-		
 	}
 	
 	public void devolverLibro() {
-		System.out.println("Mis libros: ");	
-		System.out.println("Introduce el titulo del libro a devolver: ");
-		String valor = sc.nextLine();
-		
-		for(Map.Entry<String, Libro> prestado: prestados.entrySet()) {
-			if(valor.equals(prestado.getKey())) {
-				System.out.println("Devolviendo libro...");
-				this.libros.put(prestado.getKey(), prestado.getValue());
-				System.out.println("Devolución completa, copias disponibles de " +
-									valor + " = ");
-			}
-	}
+//		Set<Entry<String, Libro>> biblio  = this.libros.entrySet();
+//		System.out.println("Introduce el titulo del libro a devolver: ");
+//		String valor = sc.nextLine();
+//		
+//		for(Map.Entry<String, Libro> prestado: prestados.entrySet()) {
+//			if(valor.equals(prestado.getKey()) && prestado.getValue() > 1) {
+//				System.out.println("Devolviendo libro...");
+//			    prestado.setValue(prestado.getValue()-1);
+//			}else {
+//				if(valor.equals(prestado.getKey()) && prestado.getValue() == 1) {
+//					this.libros.put(valor, 1);
+//				}
+//			}
+//		}
 }
+	
 }

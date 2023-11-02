@@ -24,7 +24,8 @@ public class Menu {
                     "2. Agregar nuevo libro a la biblioteca." + "\n" + 
 					"3. Pedir un libro prestado." + "\n" + 
                     "4. Devolver un libro prestado anteriormente." + "\n" +
-					"5. Salir.");
+					"5. Mostrar los libros prestados." + "\n" + 
+                    "6. Salir.");
 			valor = sc.nextInt();
 			switch (valor) {
 			case 1: {
