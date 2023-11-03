@@ -12,47 +12,126 @@ public class Menu {
 	}
 	
 	public void menu() {
-		Biblioteca biblioteca = new Biblioteca("Nacional");
+		Biblioteca biblioteca = new Biblioteca();
 		int valor = 0;
 		Scanner sc = new Scanner(System.in);
-		
+		int str = 0;
 		do {
-			
-			System.out.println("Bienvenido a la biblioteca nacional!! " + "\n"
-                    + "Seleccion una opción: " + "\n" + 
-					"1. Mostrar todos los libros disponibles." + "\n" + 
-                    "2. Agregar nuevo libro a la biblioteca." + "\n" + 
-					"3. Pedir un libro prestado." + "\n" + 
-                    "4. Devolver un libro prestado anteriormente." + "\n" +
-					"5. Mostrar los libros prestados." + "\n" + 
-                    "6. Salir.");
+			System.out.println("Estas son las bibliotecas disponibles: ");
+			System.out.println("1. Biblioteca 1" + "\n" +
+							   "2. Biblioteca 2" + "\n" + 
+							   "3. Biblioteca 3" + "\n" + 
+							   "4. Salir.");
 			valor = sc.nextInt();
-			switch (valor) {
-			case 1: {
-				biblioteca.mostrarLibros();
-				break;
-			}
-			case 2: {
-				biblioteca.agregarLibro();
-				break;
-			}
-			case 3: {
-				biblioteca.prestarLibro();
-				break;
-			}
-			case 4: {
-				biblioteca.devolverLibro();
-				break;
-			}
-			case 5: {
-				biblioteca.librosPrestados();
-			}
-			case 6: {
-				System.out.println("Hasta la proxima!");
-				break;
+			if(valor == 1) {
+				do {
+					System.out.println("1. Mostrar Info Biblioteca." + "\n" + 
+									   "2. Mostrar Libros de la biblioteca" + "\n" +
+									   "3. Buscar Libro" + "\n" + 
+									   "4. Agregar Libro a la biblioteca" + "\n" +
+									   "5. Modificar un libro" + "\n" +
+									   "6. Borrar un libro de la biblioteca" + "\n" +
+									   "7. Volver");
+					
+					
+					valor = sc.nextInt();
+					switch (valor) {
+					case 1: {
+						biblioteca.mostrarDatosBiblio();
+						break;
+					}
+					case 2: {
+					
+					}
+					case 3: {
+						
+					}
+					case 4: {
+						
+					}
+					case 5: {
+						
+					}
+					case 6: {
+						System.out.println("Hasta la proxima!");
+						break;
+					}
+					
+					}
+				}while(valor != 6);
+			}else if(valor == 2) {
+				do {
+					System.out.println("1. Mostrar Info Biblioteca." + "\n" + 
+									   "2. Mostrar Libros de la biblioteca" + "\n" +
+									   "3. Buscar Libro" + "\n" + 
+									   "4. Agregar Libro a la biblioteca" + "\n" +
+									   "5. Modificar un libro" + "\n" +
+									   "6. Borrar un libro de la biblioteca" + "\n" +
+									   "7. Volver");
+					
+					
+					valor = sc.nextInt();
+					switch (valor) {
+					case 1: {
+						
+					}
+					case 2: {
+						
+					}
+					case 3: {
+						
+					}
+					case 4: {
+					
+					}
+					case 5: {
+						
+					}
+					case 6: {
+						System.out.println("Hasta la proxima!");
+						break;
+					}
+					
+					}
+				}while(valor != 7);
+			}else {
+				do {
+					System.out.println("1. Mostrar Info Biblioteca." + "\n" + 
+									   "2. Mostrar Libros de la biblioteca" + "\n" +
+									   "3. Buscar Libro" + "\n" + 
+									   "4. Agregar Libro a la biblioteca" + "\n" +
+									   "5. Modificar un libro" + "\n" +
+									   "6. Borrar un libro de la biblioteca" + "\n" +
+									   "7. Volver");
+					
+					
+					valor = sc.nextInt();
+					switch (valor) {
+					case 1: {
+						
+					}
+					case 2: {
+						
+					}
+					case 3: {
+						
+					}
+					case 4: {
+						
+					}
+					case 5: {
+						
+					}
+					case 6: {
+						System.out.println("Hasta la proxima!");
+						break;
+					}
+					
+					}
+				}while(valor != 7);
 			}
 			
-			}
-		}while(valor != 6);
-	}
+		
+	}while(str !=4);
+}
 }
