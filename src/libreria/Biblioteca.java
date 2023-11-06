@@ -67,7 +67,7 @@ public class Biblioteca {
 		this.libros = libros;
 	}
 	
-	public void mostrarDatosBiblio() {
+	public void mostrarDatosBiblio(int idx) {
 		String url = "jdbc:mysql://localhost:3306/bibliotecas?serverTimezone=Europe/Madrid";
 		String username = "root";
 		String password = "12345678";
@@ -75,11 +75,11 @@ public class Biblioteca {
 		try (
 				Connection connection = DriverManager.getConnection(url, username, password);
 				Statement stmt = connection.createStatement();
-				ResultSet rs = stmt.executeQuery("select * from tb_bibliotecas;");
+				ResultSet rs = stmt.executeQuery("select * from tb_bibliotecas where id_biblio="+idx + ";");
 			) {			
 			while (rs.next()) {
 				System.out.println("ID: " + rs.getInt("id_biblio"));
-				System.out.println("Nombre: " + rs.getString("nombre"));
+				System.out.println("Nombre Biblioteca: " + rs.getString("nombre"));
 				System.out.println("Direccion: " + rs.getString("direccion_id"));
 				
 			}

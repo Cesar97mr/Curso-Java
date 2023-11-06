@@ -13,6 +13,7 @@ public class Menu {
 	
 	public void menu() {
 		Biblioteca biblioteca = new Biblioteca();
+		int seccion = 0;
 		int valor = 0;
 		Scanner sc = new Scanner(System.in);
 		int str = 0;
@@ -22,8 +23,8 @@ public class Menu {
 							   "2. Biblioteca 2" + "\n" + 
 							   "3. Biblioteca 3" + "\n" + 
 							   "4. Salir.");
-			valor = sc.nextInt();
-			if(valor == 1) {
+			seccion = sc.nextInt();
+			if(seccion == 1) {
 				do {
 					System.out.println("1. Mostrar Info Biblioteca." + "\n" + 
 									   "2. Mostrar Libros de la biblioteca" + "\n" +
@@ -37,7 +38,7 @@ public class Menu {
 					valor = sc.nextInt();
 					switch (valor) {
 					case 1: {
-						biblioteca.mostrarDatosBiblio();
+						biblioteca.mostrarDatosBiblio(seccion);
 						break;
 					}
 					case 2: {
@@ -103,8 +104,7 @@ public class Menu {
 									   "5. Modificar un libro" + "\n" +
 									   "6. Borrar un libro de la biblioteca" + "\n" +
 									   "7. Volver");
-					
-					
+				
 					valor = sc.nextInt();
 					switch (valor) {
 					case 1: {
