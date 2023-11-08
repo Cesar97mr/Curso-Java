@@ -1,44 +1,64 @@
 package libreria.dao;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import es.curso.java.ddbb.ejercicios.biblioteca.entities.Direccion;
 import es.curso.java.ddbb.utils.UtilsDataBase;
 import libreria.entities.Biblioteca;
 
-public class BibliotecaDao {
-	
-	private Connection conexion;
+public class BibliotecaDao extends ConexionDAO{
 	
 	
-	public BibliotecaDao(String nombre) throws SQLException {
+	
+	public BibliotecaDao() throws SQLException {
 		super();
-		this.conexion = UtilsDataBase.getInstance();
+		// TODO Auto-generated constructor stub
 	}
-	
-	public List<Biblioteca> getBibliotecas() throws SQLException{
+
+public List<Biblioteca> getBibliotecas () throws SQLException {
 		
 		List<Biblioteca> bibliotecas = new ArrayList<Biblioteca>();
-		this.conexion.createStatement();
+
+		Statement stmt = this.getConexion().createStatement();
+		String query = "SELECT biblio.id, biblio.nombre, dir.tipo_direccion, dir.direccion, dir.ciudad, dir.provincia, dir.cp FROM TB_BIBLIOTECA as biblio JOIN TB_DIRECCION as dir ON biblio.fk_direccion = dir.id;";
+		
+		ResultSet rs = stmt.executeQuery(query);
+		
+		while (rs.next()) {
+			long idBiblioteca = rs.getLong("biblio.id");
+			String nombreBiblioteca = rs.getString("biblio.nombre");
+			String tipoDireccion = rs.getString("dir.tipo_direccion");
+			String direccion = rs.getString("dir.direccion");
+			String ciudad = rs.getString("dir.ciudad");
+			String provincia = rs.getString("dir.provincia");
+			int codPostal = rs.getInt("dir.cp");
+
+			Direccion dire = new Direccion(tipoDireccion,direccion,ciudad,provincia,codPostal);
+			Biblioteca biblio = new Biblioteca(idBiblioteca, nombreBiblioteca, dire);
+			
+			bibliotecas.add(biblio);
+		}
 		
 		return bibliotecas;
 	}
 	
-	public List<Biblioteca> getBibliotecas(String nombre) {
-		List<Biblioteca> bibliotecas = new ArrayList<Biblioteca>();
+	public List<Biblioteca> getBibliotecas (String ciudad) {
 		
+		List<Biblioteca> bibliotecas = new ArrayList<Biblioteca>();
 		
 		return bibliotecas;
 	}
 	
-	public Biblioteca getBiblioteca(long id) {
-		
+	
+	public Biblioteca getBiblioteca (long id) {
 		
 		
 		return null;
 	}
-	
 	
 }

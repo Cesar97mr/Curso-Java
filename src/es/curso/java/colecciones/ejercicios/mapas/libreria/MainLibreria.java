@@ -1,6 +1,6 @@
 package es.curso.java.colecciones.ejercicios.mapas.libreria;
 
-import es.curso.java.utils.Utilidades;
+import utils.Utils;
 
 public class MainLibreria {
 
@@ -19,7 +19,7 @@ public class MainLibreria {
 			
 			//Pinta Menu
 			String[] preguntas = {"1. Agregar libro","2. Prestar ","3. Devolver","4. Salir"};
-			opcion = Utilidades.pintarMenu(preguntas, "Elige una opcion");
+			opcion = Utils.pintarMenu(preguntas, "Elige una opcion");
 			
 			switch (opcion) {
 			case 1: agregarLibro(biblioteca); break;
@@ -37,9 +37,9 @@ public class MainLibreria {
 	
 	public void agregarLibro(Biblioteca biblioteca) {
 		
-		String titulo = Utilidades.pideDatoTexto("Introduce Titulo");
-		String autor = Utilidades.pideDatoTexto("Introduce Autor");
-		int copias = Utilidades.pideDatoNumerico("Introduce numero de copias");
+		String titulo = Utils.pideDatoTexto("Introduce Titulo");
+		String autor = Utils.pideDatoTexto("Introduce Autor");
+		int copias = Utils.pideDatoNumerico("Introduce numero de copias");
 		
 		biblioteca.aniadirLibro(titulo,autor,copias);
 		
@@ -47,7 +47,7 @@ public class MainLibreria {
 	
 	
 	public void prestarLibro(Biblioteca biblioteca) {
-		String titulo = Utilidades.pideDatoTexto("Introduce Titulo del libro");
+		String titulo = Utils.pideDatoTexto("Introduce Titulo del libro");
 		if(biblioteca.existeLibro(titulo) && biblioteca.estaDisponible(titulo)) {
 			biblioteca.prestarLibro(titulo);
 		}else {
@@ -57,7 +57,7 @@ public class MainLibreria {
 	}
 	
 	public void devolverLibro(Biblioteca biblioteca) {
-		String titulo = Utilidades.pideDatoTexto("Introduce Titulo del libro");
+		String titulo = Utils.pideDatoTexto("Introduce Titulo del libro");
 		if(biblioteca.existeLibro(titulo)) {
 			biblioteca.devolverLibro(titulo);
 		}else {

@@ -8,7 +8,8 @@ import java.util.Set;
 
 import es.curso.java.ddbb.ejercicios.biblioteca.dao.BibliotecaDAO;
 import es.curso.java.ddbb.ejercicios.biblioteca.entities.Biblioteca;
-import es.curso.java.utils.Utilidades;
+import utils.Utils;
+
 
 public class BibliotecaMain {
 	private Map<Long,Biblioteca> mapBibliotecas;
@@ -65,7 +66,7 @@ public class BibliotecaMain {
 		for (Entry<Long, Biblioteca> entry : entryBiblioteca) {
 			System.out.println(entry.getKey() + ". " + entry.getValue().getNombre());
 		}
-		int opcion = Utilidades.pintarMenu((entryBiblioteca.size()+1) + ". Salir");
+		int opcion = Utils.pintarMenu((entryBiblioteca.size()+1) + ". Salir");
 		
 		return opcion;
 	}
