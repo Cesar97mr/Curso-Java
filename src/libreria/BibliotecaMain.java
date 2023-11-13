@@ -57,7 +57,7 @@ public class BibliotecaMain {
 			opcion = sc.nextInt();
 			switch (opcion) {
 			case 1: {
-				System.out.println(b.getNombre());	
+				
 				
 				break;
 			}
