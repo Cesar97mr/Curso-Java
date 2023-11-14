@@ -1,60 +1,47 @@
 package libreria.dao;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import es.curso.java.ddbb.ejercicios.biblioteca.entities.Direccion;
-import libreria.entities.Biblioteca;
-import librerias.mapas.Libro;
+import es.curso.java.ddbb.ejercicios.biblioteca.entities.Libro;
 
-public class LibroDao extends ConexionDAO{
-	
-public LibroDao() throws SQLException {
-		super();
-		// TODO Auto-generated constructor stub
+public class LibroDao extends ConexionDAO {
+
+	public LibroDao() throws SQLException {
+		
 	}
 
-public List<Biblioteca> getLibros () throws SQLException {
+	public List<Libro> getLibros (long id) throws SQLException {
 		
 		List<Libro> libros = new ArrayList<Libro>();
 
-		Statement stmt = this.getConexion().createStatement();
-		String query = "SELECT biblio.id, biblio.nombre, dir.tipo_direccion, dir.direccion, dir.ciudad, dir.provincia, dir.cp FROM TB_BIBLIOTECA as biblio JOIN TB_DIRECCION as dir ON biblio.fk_direccion = dir.id;";
+		String query = "SELECT ID, TITULO, AUTOR, ISBN "
+				+ "FROM TB_LIBROS "
+				+ "WHERE FK_BIBLIOTECA=?";
 		
-		ResultSet rs = stmt.executeQuery(query);
+		System.out.println("Consulta creada" + query);
+		System.out.println("Parametro FK_BIBLIOTECA:"+id);
+		
+		PreparedStatement stmt = this.getConexion().prepareStatement(query);
+		stmt.setLong(1, id);
+		
+		ResultSet rs = stmt.executeQuery();
 		
 		while (rs.next()) {
-			long idBiblioteca = rs.getLong("biblio.id");
-			String nombreBiblioteca = rs.getString("biblio.nombre");
-			String tipoDireccion = rs.getString("dir.tipo_direccion");
-			String direccion = rs.getString("dir.direccion");
-			String ciudad = rs.getString("dir.ciudad");
-			String provincia = rs.getString("dir.provincia");
-			int codPostal = rs.getInt("dir.cp");
-
-			Direccion dire = new Direccion(tipoDireccion,direccion,ciudad,provincia,codPostal);
-			Libro biblio = new Libro(idBiblioteca, nombreBiblioteca, dire);
+			long idLibro = rs.getLong("ID");
+			String titulo = rs.getString("TITULO");
+			String autor = rs.getString("AUTOR");
+			String isbn = rs.getString("ISBN");
 			
-			libros.add(biblio);
+		
+			libros.add(new Libro(idLibro,titulo,autor,isbn));
 		}
 		
 		return libros;
 	}
 	
-	public List<Biblioteca> getBibliotecas (String ciudad) {
-		
-		List<Biblioteca> bibliotecas = new ArrayList<Biblioteca>();
-		
-		return bibliotecas;
-	}
 	
-	
-	public Biblioteca getBiblioteca (long id) {
-		
-		
-		return null;
-	}
 }

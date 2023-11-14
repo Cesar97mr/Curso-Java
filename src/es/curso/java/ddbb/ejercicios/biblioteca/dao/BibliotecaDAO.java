@@ -23,7 +23,7 @@ public class BibliotecaDAO extends ConexionDAO {
 
 		Statement stmt = this.getConexion().createStatement();
 		String query = "SELECT biblio.id, biblio.nombre, \r\n"
-				+ "dir.tipo_direccion, dir.direccion, dir.ciudad, dir.provincia, dir.cod_postal\r\n"
+				+ "dir.tipo_direccion, dir.direccion, dir.ciudad, dir.provincia, dir.cp\r\n"
 				+ "FROM TB_BIBLIOTECA as biblio JOIN TB_DIRECCION as dir \r\n"
 				+ "ON biblio.fk_direccion = dir.id";
 		
@@ -36,7 +36,7 @@ public class BibliotecaDAO extends ConexionDAO {
 			String direccion = rs.getString("dir.direccion");
 			String ciudad = rs.getString("dir.ciudad");
 			String provincia = rs.getString("dir.provincia");
-			int codPostal = rs.getInt("dir.cod_postal");
+			int codPostal = rs.getInt("dir.cp");
 
 			Direccion dire = new Direccion(tipoDireccion,direccion,ciudad,provincia,codPostal);
 			Biblioteca biblio = new Biblioteca(idBiblioteca, nombreBiblioteca, dire);

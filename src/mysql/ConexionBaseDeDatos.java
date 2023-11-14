@@ -1,4 +1,3 @@
-package mysql;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -21,8 +20,6 @@ public class ConexionBaseDeDatos {
 		conexion.conectaTryWithResources();
 
 	}
-	
-	
 	private void conectaTryWithResources() {
 		String url = "jdbc:mysql://localhost:3306/db_alumnos?serverTimezone=Europe/Madrid";
 		String username = "root";

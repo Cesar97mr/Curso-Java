@@ -10,13 +10,11 @@ import java.util.Set;
 import es.curso.java.ddbb.ejercicios.biblioteca.dao.BibliotecaDAO;
 import es.curso.java.ddbb.ejercicios.biblioteca.dao.LibroDAO;
 import es.curso.java.ddbb.ejercicios.biblioteca.entities.Biblioteca;
-<<<<<<< HEAD
-import utils.Utils;
 
-=======
+import utils.Utils;
 import es.curso.java.ddbb.ejercicios.biblioteca.entities.Libro;
-import es.curso.java.utils.Utilidades;
->>>>>>> branch 'master' of https://github.com/joselllorente/cursogetafe.git
+
+
 
 public class BibliotecaMain {
 	private Map<Long,Biblioteca> mapBibliotecas;
@@ -52,12 +50,12 @@ public class BibliotecaMain {
 //		
 //		String[] opciones2 = {"","",""};
 		
-		int opcion = Utilidades.pintarMenu(new String[] {"1. Mostrar Info biblioteca","2. Mostrar Libros de la biblioteca"} , 
+		int opcion = Utils.pintarMenu(new String[] {"1. Mostrar Info biblioteca","2. Mostrar Libros de la biblioteca"} , 
 				"Seleccione una opción");
 		
-<<<<<<< HEAD
+
 		Utils.pintarMenu(new String[] {"","",""} , null);
-=======
+
 		switch (opcion) {
 			case 1: mostrarInfoBiblioteca(biblioteca); break;
 			case 2: mostrarLibrosBiblioteca(biblioteca); break;
@@ -85,14 +83,9 @@ public class BibliotecaMain {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		
->>>>>>> branch 'master' of https://github.com/joselllorente/cursogetafe.git
-		
+		}		
 		
 	}
-	
-	
 	
 	public void cargarDatosBiblioteca () {
 		
