@@ -11,9 +11,6 @@ import libreria.entities.Biblioteca;
 import librerias.mapas.Libro;
 
 public class LibroDao extends ConexionDAO{
-
-	
-	
 	
 public LibroDao() throws SQLException {
 		super();

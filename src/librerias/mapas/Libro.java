@@ -1,17 +1,45 @@
 package librerias.mapas;
 
+import es.curso.java.ddbb.ejercicios.biblioteca.entities.Biblioteca;
 
 public class Libro {
-	
+	private long id;
 	private String titulo;
 	private String autor;
-	private int numCopias;
-
-	public Libro(String titulo, String autor, int numCopias) {
+	private String isbn;
+	private Biblioteca biblioteca;
+	
+	public Libro(long id, String titulo, String autor, String isbn, Biblioteca biblioteca) {
 		super();
+		this.id = id;
 		this.titulo = titulo;
 		this.autor = autor;
-		this.numCopias = numCopias;
+		this.isbn = isbn;
+		this.biblioteca = biblioteca;
+	}
+	
+	public Libro(long id, String titulo, String autor, String isbn) {
+		super();
+		this.id = id;
+		this.titulo = titulo;
+		this.autor = autor;
+		this.isbn = isbn;
+	}
+
+	
+	
+	/**
+	 * @return the id
+	 */
+	public long getId() {
+		return id;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	/**
@@ -43,28 +71,41 @@ public class Libro {
 	}
 
 	/**
-	 * @return the numCopias
+	 * @return the isbn
 	 */
-	public int getNumCopias() {
-		return numCopias;
+	public String getIsbn() {
+		return isbn;
 	}
 
 	/**
-	 * @param numCopias the numCopias to set
+	 * @param isbn the isbn to set
 	 */
-//	public void setNumCopias(int numCopias) {
-//		this.numCopias = numCopias;
-//	}
+	public void setIsbn(String isbn) {
+		this.isbn = isbn;
+	}
+
+	/**
+	 * @return the biblioteca
+	 */
+	public Biblioteca getBiblioteca() {
+		return biblioteca;
+	}
+
+	/**
+	 * @param biblioteca the biblioteca to set
+	 */
+	public void setBiblioteca(Biblioteca biblioteca) {
+		this.biblioteca = biblioteca;
+	}
 
 	@Override
 	public String toString() {
-		return "Libro [" + (titulo != null ? "titulo=" + titulo + ", " : "")
-				+ (autor != null ? "autor=" + autor + ", " : "") + "numCopias=" + numCopias + "]";
+		return "Libro [id=" + id + ", " + (titulo != null ? "titulo=" + titulo + ", " : "")
+				+ (autor != null ? "autor=" + autor + ", " : "") + (isbn != null ? "isbn=" + isbn + ", " : "")
+				+ (biblioteca != null ? "biblioteca=" + biblioteca : "") + "]";
 	}
 	
 	
-	public void actualizarCopias(int numCopias) {
-		this.numCopias+=numCopias;
-	}
-
+	
+	
 }

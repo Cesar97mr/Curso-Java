@@ -9,7 +9,8 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 import es.curso.java.poo.ejercicios.Alumno;
-import es.curso.java.utils.Utilidades;
+
+import utils.Utils;
 
 public class MapaAlumnos {
 
@@ -53,7 +54,7 @@ public class MapaAlumnos {
 		
 		
 		//Solicitar DNI y hay que indicar en que colegio se encuentra ese alumno  
-		String dni = Utilidades.pideDatoTexto("Escribe dni a buscar");
+		String dni = Utils.pideDatoTexto("Escribe dni a buscar");
 		Set<String> colegios = mapaColegios.keySet();
 		boolean alumnoEncontrado=false;
 		for (String colegio : colegios) {
@@ -106,7 +107,7 @@ public class MapaAlumnos {
 	public void buscaAlumno(Map<String,Alumno> alumnosMap) {
 		//- A partir de un dni, mirar si esta el alumno en el mapa 
 		//y si está devolver la información del alumno
-		String dni = Utilidades.pideDatoTexto("Escribe dni a buscar");
+		String dni = Utils.pideDatoTexto("Escribe dni a buscar");
 		
 		Alumno alumonoEncontrado = alumnosMap.get(dni);
 		if (alumonoEncontrado!=null) {
