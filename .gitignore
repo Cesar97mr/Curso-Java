@@ -1,3 +1,7 @@
 /bin/
 /target/
+<<<<<<< HEAD
 /logs/
+=======
+/logs/
+>>>>>>> branch 'master' of https://github.com/joselllorente/cursogetafe.git
