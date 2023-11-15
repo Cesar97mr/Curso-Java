@@ -1,3 +1,15 @@
+package es.curso.java.ddbb.ejercicios.biblioteca;
+
+import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import es.curso.java.ddbb.ejercicios.biblioteca.dao.BibliotecaDAO;
 import es.curso.java.ddbb.ejercicios.biblioteca.dao.LibroDAO;
 import es.curso.java.ddbb.ejercicios.biblioteca.entities.Biblioteca;
@@ -9,10 +21,7 @@ import utils.Utils;
 public class BibliotecaMain {
 	
 	private static final Logger logger = LogManager.getLogger(BibliotecaMain.class);
-	
 
-	
-	
 	private Map<Long,Biblioteca> mapBibliotecas;
 	private final int OPCION1 = 1;
 
@@ -48,10 +57,6 @@ public class BibliotecaMain {
 //		opciones[1]="";
 //		
 //		String[] opciones2 = {"","",""};
-
-		
-		int opcion = Utils.pintarMenu(new String[] {"1. Mostrar Info biblioteca","2. Mostrar Libros de la biblioteca"} , 
-
 		int opcion = 0;
 		do {
 			opcion = Utils.pintarMenu(new String[] 
@@ -59,16 +64,8 @@ public class BibliotecaMain {
 					"2. Mostrar Libros de la biblioteca",
 					"3. Buscar Libro"} ,
 					
-
-
-		Utils.pintarMenu(new String[] {"","",""} , null);
-
-		switch (opcion) {
-			case 1: mostrarInfoBiblioteca(biblioteca); break;
-			case 2: mostrarLibrosBiblioteca(biblioteca); break;
-			default: System.out.println("opcion incorrecta");	
-		}
-
+				"Seleccione una opción");
+		
 			switch (opcion) {
 				case OPCION1: mostrarInfoBiblioteca(biblioteca); break;
 				case 2: mostrarLibrosBiblioteca(biblioteca); break;
@@ -76,7 +73,6 @@ public class BibliotecaMain {
 				case 8: System.out.println("Adios!!!");; break;
 				default: System.out.println("opcion incorrecta");	
 			}
-
 
 		}while(opcion!=8);
 	}
@@ -87,6 +83,7 @@ public class BibliotecaMain {
 
 		
 	}
+	
 	
 	public void mostrarLibrosBiblioteca(Biblioteca b) {
 		
@@ -100,16 +97,13 @@ public class BibliotecaMain {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-
-		}		
-=======
 		}
 	}
 	
 	public void buscarLibroBiblioteca (Biblioteca biblioteca) {
 		
-		String campo = Utilidades.pideDatoTexto("¿Por qué campo quieres buscar (Titulo,Autor,ISBN)?");
-		String valor = Utilidades.pideDatoTexto("Introduce el valor a buscar del "+campo);
+		String campo = Utils.pideDatoTexto("¿Por qué campo quieres buscar (Titulo,Autor,ISBN)?");
+		String valor = Utils.pideDatoTexto("Introduce el valor a buscar del "+campo);
 		
 		Map<String, String> datos = new HashMap<String,String>();
 		datos.put(campo, valor);
@@ -132,7 +126,6 @@ public class BibliotecaMain {
 			e.printStackTrace();
 		}
 		
-
 		
 	}
 	
@@ -156,14 +149,7 @@ public class BibliotecaMain {
 	public int crearMenuPrincipal() {
 		
 		Set<Entry<Long,Biblioteca> > entryBiblioteca  =  mapBibliotecas.entrySet();
-
-		
-		for (Entry<Long, Biblioteca> entry : entryBiblioteca) {
-			System.out.println(entry.getKey() + ". " + entry.getValue().getNombre());
-		}
-		int opcion = Utils.pintarMenu((entryBiblioteca.size()+1) + ". Salir");
-
-		opcion = 0;
+		int opcion = 0;
 		do {
 			for (Entry<Long, Biblioteca> entry : entryBiblioteca) {
 				System.out.println(entry.getKey() + ". " + entry.getValue().getNombre());
@@ -174,7 +160,4 @@ public class BibliotecaMain {
 
 		return opcion;
 	}
-	
-	
-	
 }
