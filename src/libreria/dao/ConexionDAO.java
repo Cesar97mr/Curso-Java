@@ -3,7 +3,9 @@ package libreria.dao;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-import es.curso.java.ddbb.utils.UtilsDataBase;
+import utils.UtilsDataBase;
+
+
 
 public abstract class ConexionDAO {
 	

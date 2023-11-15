@@ -1,7 +1,5 @@
 package libreria.entities;
 
-import es.curso.java.ddbb.ejercicios.biblioteca.entities.Biblioteca;
-
 public class Libro {
 	private long id;
 	private String titulo;

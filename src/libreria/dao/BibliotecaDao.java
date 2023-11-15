@@ -7,9 +7,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import es.curso.java.ddbb.ejercicios.biblioteca.entities.Direccion;
-import es.curso.java.ddbb.utils.UtilsDataBase;
+
 import libreria.entities.Biblioteca;
+import libreria.entities.Direccion;
 
 public class BibliotecaDao extends ConexionDAO{
 	

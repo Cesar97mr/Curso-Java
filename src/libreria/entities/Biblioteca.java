@@ -1,7 +1,5 @@
 package libreria.entities;
 
-import es.curso.java.ddbb.ejercicios.biblioteca.entities.Direccion;
-
 public class Biblioteca {
 	private long id;
 	private String nombre;

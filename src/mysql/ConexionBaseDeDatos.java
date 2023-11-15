@@ -10,7 +10,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import es.curso.java.colecciones.ejercicios.guerra.Guerrero;
 import mysql.Facility;
 
 public class ConexionBaseDeDatos {

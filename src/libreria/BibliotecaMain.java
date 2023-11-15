@@ -10,10 +10,10 @@ import java.util.Set;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import es.curso.java.ddbb.ejercicios.biblioteca.dao.BibliotecaDAO;
-import es.curso.java.ddbb.ejercicios.biblioteca.dao.LibroDAO;
-import es.curso.java.ddbb.ejercicios.biblioteca.entities.Biblioteca;
-import es.curso.java.ddbb.ejercicios.biblioteca.entities.Libro;
+import libreria.dao.BibliotecaDao;
+import libreria.dao.LibroDao;
+import libreria.entities.Biblioteca;
+import libreria.entities.Libro;
 import utils.Utils;
 
 
@@ -88,7 +88,7 @@ public class BibliotecaMain {
 	public void mostrarLibrosBiblioteca(Biblioteca b) {
 		
 		try {
-			LibroDAO libroDAO = new LibroDAO();
+			LibroDao libroDAO = new LibroDao();
 			List<Libro> libros = libroDAO.getLibros(b.getId());
 			for (Libro libro : libros) {
 				System.out.println(libro);
@@ -109,7 +109,7 @@ public class BibliotecaMain {
 		datos.put(campo, valor);
 		
 		try {
-			LibroDAO libroDAO = new LibroDAO();
+			LibroDao libroDAO = new LibroDao();
 			
 			List<Libro> libros = libroDAO.buscarLibro(biblioteca.getId(), datos);
 			if (libros!=null && !libros.isEmpty()) {
@@ -132,7 +132,7 @@ public class BibliotecaMain {
 	public void cargarDatosBiblioteca () {
 		
 		try {
-			BibliotecaDAO bibliotecaDAO = new BibliotecaDAO();
+			BibliotecaDao bibliotecaDAO = new BibliotecaDao();
 			
 			for (Biblioteca biblioteca :  bibliotecaDAO.getBibliotecas()) {
 				mapBibliotecas.put(biblioteca.getId(), biblioteca);
