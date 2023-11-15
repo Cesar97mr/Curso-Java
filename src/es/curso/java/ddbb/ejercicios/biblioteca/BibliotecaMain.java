@@ -1,21 +1,8 @@
-package es.curso.java.ddbb.ejercicios.biblioteca;
-
-import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import es.curso.java.ddbb.ejercicios.biblioteca.dao.BibliotecaDAO;
 import es.curso.java.ddbb.ejercicios.biblioteca.dao.LibroDAO;
 import es.curso.java.ddbb.ejercicios.biblioteca.entities.Biblioteca;
-
-import utils.Utils;
 import es.curso.java.ddbb.ejercicios.biblioteca.entities.Libro;
+import utils.Utils;
 
 
 
@@ -61,21 +48,18 @@ public class BibliotecaMain {
 //		opciones[1]="";
 //		
 //		String[] opciones2 = {"","",""};
-<<<<<<< HEAD
+
 		
 		int opcion = Utils.pintarMenu(new String[] {"1. Mostrar Info biblioteca","2. Mostrar Libros de la biblioteca"} , 
-=======
+
 		int opcion = 0;
 		do {
-			opcion = Utilidades.pintarMenu(new String[] 
+			opcion = Utils.pintarMenu(new String[] 
 					{"1. Mostrar Info biblioteca",
 					"2. Mostrar Libros de la biblioteca",
 					"3. Buscar Libro"} ,
 					
->>>>>>> branch 'master' of https://github.com/joselllorente/cursogetafe.git
-				"Seleccione una opción");
-		
-<<<<<<< HEAD
+
 
 		Utils.pintarMenu(new String[] {"","",""} , null);
 
@@ -84,7 +68,7 @@ public class BibliotecaMain {
 			case 2: mostrarLibrosBiblioteca(biblioteca); break;
 			default: System.out.println("opcion incorrecta");	
 		}
-=======
+
 			switch (opcion) {
 				case OPCION1: mostrarInfoBiblioteca(biblioteca); break;
 				case 2: mostrarLibrosBiblioteca(biblioteca); break;
@@ -92,7 +76,7 @@ public class BibliotecaMain {
 				case 8: System.out.println("Adios!!!");; break;
 				default: System.out.println("opcion incorrecta");	
 			}
->>>>>>> branch 'master' of https://github.com/joselllorente/cursogetafe.git
+
 
 		}while(opcion!=8);
 	}
@@ -116,7 +100,7 @@ public class BibliotecaMain {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-<<<<<<< HEAD
+
 		}		
 =======
 		}
@@ -148,7 +132,7 @@ public class BibliotecaMain {
 			e.printStackTrace();
 		}
 		
->>>>>>> branch 'master' of https://github.com/joselllorente/cursogetafe.git
+
 		
 	}
 	
