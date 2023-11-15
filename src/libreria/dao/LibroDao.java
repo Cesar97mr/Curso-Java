@@ -98,6 +98,7 @@ public class LibroDao extends ConexionDAO implements ILibro{
 			String autor = rs.getString("AUTOR");
 			String isbn = rs.getString("ISBN");
 			
+			
 		
 			libros.add(new Libro(idLibro,titulo,autor,isbn));
 		}
@@ -143,7 +144,6 @@ public class LibroDao extends ConexionDAO implements ILibro{
 			throws SQLException, NoResultsException{
 		insertarLibro(libro.getTitulo(), libro.getAutor(), libro.getIsbn(), idBiblioteca);
 	}
-	
 	
 	
 }
