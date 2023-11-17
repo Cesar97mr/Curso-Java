@@ -3,123 +3,180 @@ package ficheros;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.lang.reflect.Array;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Stream;
+
+import poo.Alumno;
 
 public class ArchivoServicio {
-	
-	private List<File> ficheros = new ArrayList<File>();
-	
-    public List<File> getFicheros() {
-		return ficheros;
+
+	//El nombre es la ruta y el nombre del fichero
+	public void crearArchivo(String nombre) {
+		File archivo = new File(nombre);
+		try (BufferedWriter buffer = new BufferedWriter(new FileWriter(archivo, false))) {
+
+			buffer.append("Hola que tal amigos!\n")
+					.append("Todo bien? yo escribiendo en un archivo...\n")
+					.append("Hasta luego Lucas!\n");
+			// buffer.close();
+			System.out.println("El archivo se ha creado con éxito!");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
-	public void setFicheros(List<File> ficheros) {
-		this.ficheros = ficheros;
+	public void crearArchivo2(String nombre) {
+		File archivo = new File(nombre);
+		
+		try (PrintWriter buffer = new PrintWriter(archivo)) {
+			// try (PrintWriter buffer = new PrintWriter(new FileWriter(archivo))){
+
+			buffer.println("Hola que tal amigos!");
+			buffer.println("Todo bien? yo acá escribiendo un archivo...");
+			buffer.printf("Hasta luego %s! %s", "JoseLuis5", "Cadena");
+			// buffer.close();
+			System.out.println("El archivo se ha creado con éxito!");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
-	public void crearArchivo(String nombre){
-        File archivo = new File(nombre);
-        try (BufferedWriter buffer = new BufferedWriter(new FileWriter(archivo, false))){
-
-            buffer.append("Hola que tal amigos!\n")
-                    .append("Todo bien? yo escribiendo en un archivo...\n")
-                    .append("Hasta luego Lucas!\n");
-            // buffer.close();
-            System.out.println("El archivo se ha creado con éxito!");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void crearArchivo2(String nombre){
-        File archivo = new File(nombre);
-        
-        try (PrintWriter buffer = new PrintWriter(new FileWriter(archivo))){
-
-            buffer.println("Hola que tal amigos!");
-            buffer.println("Todo bien? yo acá escribiendo un archivo...");
-            buffer.printf("Hasta luego %s!", "JoseLuis5");
-            // buffer.close();
-            System.out.println("El archivo se ha creado con éxito!");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public String leerArchivo(String nombre) throws IOException{
-        StringBuilder sb = new StringBuilder();
-        File archivo = new File(nombre);
-        FileReader fileReader = new FileReader(archivo);
-        BufferedReader reader = new BufferedReader(fileReader);
-        
-        String linea;
-        while ( (linea = reader.readLine()) != null){
-            sb.append(linea).append("\n");
-        }
-        
-//        try (BufferedReader reader = new BufferedReader(new FileReader(archivo))){
+	public String leerArchivo(String nombre) throws IOException {
+		StringBuilder sb = new StringBuilder();
+		File archivo = new File(nombre);
+//		FileReader fileReader = new FileReader(archivo);
+//		BufferedReader reader = new BufferedReader(fileReader);
 //
-//            String linea;
-//            while ( (linea = reader.readLine()) != null){
-//                sb.append(linea).append("\n");
-//            }
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-        return sb.toString();
-    }
+//		String linea;
+//		while ((linea = reader.readLine()) != null) {
+//			sb.append(linea).append("\n");
+//		}
 
-    public String leerArchivo2(String nombre){ 
-        StringBuilder sb = new StringBuilder();
-        File archivo = new File(nombre);
-        try (Scanner s = new Scanner(archivo)){
+        try (BufferedReader reader = new BufferedReader(new FileReader(archivo))){
 
-            s.useDelimiter("\n");
-            while (s.hasNext()){
-                sb.append(s.next()).append("\n");
+            String linea;
+            while ( (linea = reader.readLine()) != null){
+                sb.append(linea).append("\n");
             }
-
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return sb.toString();
-    }
-    
-    
-    public void mostrarContenidoDirectorio(String directorio) {
-    	File dir = new File(directorio);
-        
-        if(dir.isDirectory()) {
-        	String[] ficheros = dir.list();
-        	for (String nombreFichero : ficheros) {
-				System.out.print(nombreFichero + " ");
-				String nuevoFichero = directorio+nombreFichero;
+		return sb.toString();
+	}
+
+	public String leerArchivo2(String nombre) {
+		StringBuilder sb = new StringBuilder();
+		File archivo = new File(nombre);
+		try (Scanner s = new Scanner(archivo)) {
+
+			s.useDelimiter("\n");
+			while (s.hasNext()) {
+				sb.append(s.next()).append("\n");
+			}
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return sb.toString();
+	}
+
+	public String leerArchivo3(String nombre) throws IOException{
+		Path path = Paths.get(nombre);
+		StringBuilder sb = new StringBuilder();
+
+		List<String> lines = Files.readAllLines(path);
+		for (String linea : lines) {
+			sb.append(linea+"\n");
+		}
+
+		return sb.toString();
+	}
+
+	public void mostrarContenidoDirectorio(String directorio) {
+		File dir = new File(directorio);
+		File file1 = new File(directorio, "fichero1.txt");
+		File file2 = new File(dir, "fichero1.txt");
+
+		if (dir.isDirectory()) {
+			String[] ficheros = dir.list();
+			for (String nombreFichero : ficheros) {
+				// System.out.print(nombreFichero + " ");
+				String nuevoFichero = directorio + nombreFichero;
+				System.out.println(nuevoFichero);
 				File file = new File(nuevoFichero);
-				if(file.isDirectory()) {
-					System.out.println("Es un directorio");
-				}else {
-					if(file.getName().endsWith(".jpg")) {
-						System.out.println("Se puede leer: " + file.canRead());
-						System.out.println("Tamaño: " + file.length());
+				if (file.isDirectory()) {
+					// System.out.println("Es un directorio");
+				} else {
+					if (file.getName().endsWith(".txt")) {
+						System.out.println("Se puede leer:" + file.canRead());
+						System.out.println("TAmaño " + file.length());
 						System.out.println("Es un fichero");
 					}
 				}
-					
+
 			}
-        }else {
-        	System.err.println("No es un directorio");
+		} else {
+			System.err.println("No es un directorio");
+		}
+	}
+	
+	public List<Alumno> crearAlumnos(String arch) throws IOException {
+		
+		List<Alumno> alumnos = new ArrayList<Alumno>();
+
+		try {
+			
+            String archivo = leerArchivo3(arch);
+            Scanner sc = new Scanner(archivo);
+            
+            while (sc.hasNextLine()) {
+
+            	String[] parts = sc.nextLine().split("\\|");
+            	String nombre = parts[0];
+            	String apellidos = parts[1];
+            	String dni = parts[2];
+            	double nota = Integer.parseInt(parts[3]);         	
+                Alumno alumno = new Alumno(nombre,apellidos,dni,nota);
+                System.out.println("Alumno creado!");
+                alumnos.add(alumno);
+            }
+
+            sc.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("Archivo no encontrado: " + arch);
+            e.printStackTrace();
         }
+		System.out.println("El tamaño de la lista de alumnos es de: " + alumnos.size());
+		return alumnos;
     }
-    
-    public void listarContenido(String directorio) {
-    	File dir = new File(directorio);
-    }
+	
+	public void insertarDatosBiblio(String arch) {
+		
+		
+		try {
+			String archivo = leerArchivo3(arch);
+			Scanner sc = new Scanner(archivo);
+			
+			while(sc.hasNextLine()) {
+				String[] parts = sc.nextLine().split("\\|");
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 }
-    
+
   

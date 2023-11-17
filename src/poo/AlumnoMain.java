@@ -1,24 +1,51 @@
 package poo;
 
-public class AlumnoMain{
+
+import java.util.Scanner;
+
+public class AlumnoMain {
+
 	public static void main(String[] args) {
 		
+//		Alumno alumno1 = new Alumno();
+//		alumno1.setDni("A1");
+//		alumno1.setNombre("A");
+//		alumno1.setApellidos("A1");
+//		alumno1.setNota(5);
 		
-		Alumno a1 = new Alumno(4343, "cesar" , "ramos");
-		Alumno a3 = new Alumno(3123, "fabi", "dejesus", 10);
+		Alumno alumno2 = new Alumno("B2","B","Apellido2");
+		alumno2.setNota(4);
+		Alumno alumno3 = new Alumno("C3","C","Apellido3",9);
 		
-		a1.nombre = "Lauren";
-		a1.dni = 1141;
-		a1.apellidos = "Garcia";
-		a1.nota = 3;
-		
+		//alumno1.estudiar();
+		alumno2.estudiar();
+		alumno3.estudiar();
 
+		//Meto los objetos en un array
+		Alumno [] alumnos = {alumno2,alumno3};
 		
-		Alumno [] arrAprobados ={a1,a3};
+		//Creo objeto de la clase para llamar a metodo no estáticos
+		AlumnoMain am = new AlumnoMain();
+		am.pintarAprobados(alumnos);
 		
-		a1.aprobados(arrAprobados);
+	}
+	
+	public void pintarAprobados (Alumno [] alumnos) {
+		System.out.println("Alumnos aprobados");
+		for (Alumno alumno : alumnos) {
+			if (alumno.getNota() >= 5) {
+				System.out.println(alumno.getDni());
+				System.out.println(alumno.getNombre());
+				System.out.println(alumno.getApellidos());
+				System.out.println(alumno.getNota());
+				System.out.println("==========================");
+			}
+			
+		}
+		
+		
 	}
 	
 	
-	
+
 }
