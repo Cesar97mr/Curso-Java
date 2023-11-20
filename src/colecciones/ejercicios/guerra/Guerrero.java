@@ -1,6 +1,6 @@
 package colecciones.ejercicios.guerra;
 
-import es.curso.java.colecciones.ejercicios.guerra.exceptions.LimiteValoresException;
+import colecciones.ejercicios.guerra.exceptions.LimiteValoresException;
 
 public class Guerrero {
 	private String nombre;

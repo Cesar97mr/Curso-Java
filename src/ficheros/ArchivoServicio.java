@@ -12,11 +12,17 @@ import java.lang.reflect.Array;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Stream;
 
+import libreria.dao.BibliotecaDao;
+import libreria.dao.DireccionDao;
+import libreria.entities.Biblioteca;
+import libreria.entities.Direccion;
+import libreria.exceptions.NoResultsException;
 import poo.Alumno;
 
 public class ArchivoServicio {
@@ -146,8 +152,9 @@ public class ArchivoServicio {
             	String nombre = parts[0];
             	String apellidos = parts[1];
             	String dni = parts[2];
-            	double nota = Integer.parseInt(parts[3]);         	
-                Alumno alumno = new Alumno(nombre,apellidos,dni,nota);
+            	double nota = Integer.parseInt(parts[3]);     
+            
+                Alumno alumno = new Alumno(dni,nombre,apellidos,nota);
                 System.out.println("Alumno creado!");
                 alumnos.add(alumno);
             }
@@ -161,15 +168,40 @@ public class ArchivoServicio {
 		return alumnos;
     }
 	
-	public void insertarDatosBiblio(String arch) {
+	public void insertarDatosBiblio(String arch) throws SQLException {
 		
-		
+		DireccionDao direccionDao = new DireccionDao();
+		BibliotecaDao bibliotecaDao = new BibliotecaDao();
 		try {
 			String archivo = leerArchivo3(arch);
 			Scanner sc = new Scanner(archivo);
 			
 			while(sc.hasNextLine()) {
 				String[] parts = sc.nextLine().split("\\|");
+				
+					String tipoCalle = parts[0];
+					String nombreCalle = parts[1];
+					String ciudad = parts[2];
+					String provincia = parts[3];
+					int cp = Integer.parseInt(parts[4]);
+					String nombreBiblio = parts[5];
+				
+				Direccion direccion = new Direccion(tipoCalle, nombreCalle, ciudad, provincia, cp);
+				
+				
+				try {
+					direccionDao.insertarDireccion(direccion);
+					long id_dir = direccionDao.getLastDireccion();
+					Biblioteca biblioteca = new Biblioteca(nombreBiblio, id_dir);
+					
+					bibliotecaDao.insertarBiblioteca(nombreBiblio, id_dir);
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (NoResultsException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

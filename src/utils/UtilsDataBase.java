@@ -14,9 +14,9 @@ public class UtilsDataBase {
 	 * @throws SQLException 
 	 */
 	public static Connection getInstance () throws SQLException {
-		String url = "jdbc:mysql://localhost:3306/curso?serverTimezone=Europe/Madrid";
+		String url = "jdbc:mysql://localhost:3306/bibliotecas?serverTimezone=Europe/Madrid";
 		String userName = "root";
-		String password = "password";
+		String password = "12345678";
 		
 		connection = getInstance(url, userName, password);
 		

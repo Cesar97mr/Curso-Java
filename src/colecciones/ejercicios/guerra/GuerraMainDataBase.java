@@ -7,9 +7,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import es.curso.java.colecciones.ejercicios.guerra.exceptions.LimiteValoresException;
-import es.curso.java.colecciones.ejercicios.guerra.exceptions.UnidadesPermitadasException;
-import es.curso.java.ddbb.utils.UtilsDataBase;
+import colecciones.ejercicios.guerra.exceptions.LimiteValoresException;
+import colecciones.ejercicios.guerra.exceptions.UnidadesPermitadasException;
+import utils.UtilsDataBase;
 
 public class GuerraMainDataBase {
 

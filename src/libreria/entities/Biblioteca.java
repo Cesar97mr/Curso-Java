@@ -3,13 +3,21 @@ package libreria.entities;
 public class Biblioteca {
 	private long id;
 	private String nombre;
+	private long id_dir;
 	private Direccion direccion;
+
 	
+	public Biblioteca(String nombre, long id_dir) {
+		super();
+		this.nombre = nombre;
+		this.id_dir = id_dir;
+	}
 	public Biblioteca(long id, String nombre, Direccion direccion) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
-		this.direccion = direccion;
+		
+		
 	}
 	/**
 	 * @return the id

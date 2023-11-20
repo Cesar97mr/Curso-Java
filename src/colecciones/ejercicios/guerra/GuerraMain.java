@@ -3,8 +3,9 @@ package colecciones.ejercicios.guerra;
 import java.util.Arrays;
 import java.util.List;
 
-import es.curso.java.colecciones.ejercicios.guerra.exceptions.LimiteValoresException;
-import es.curso.java.colecciones.ejercicios.guerra.exceptions.UnidadesPermitadasException;
+import colecciones.ejercicios.guerra.exceptions.LimiteValoresException;
+import colecciones.ejercicios.guerra.exceptions.UnidadesPermitadasException;
+
 
 public class GuerraMain {
 
